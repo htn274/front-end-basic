@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Đăng k</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <h2 style="font-weight: bold">Đăng kí</h2>
+    </div>
+
+    <div class="row">
+        <form>
+            <div class="form-group">
+                <label for="">Họ và tên</label>
+                <div class="form-row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Họ">
+                    </div>
+                    
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Tên">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="">Email</label>
+                <input type="email" class="form-control" placeholder="Email">
+            </div>
+
+            <div class="form-group">
+                <label for="">Mật khẩu</label>
+                <input type="password" class="form-control" name="" id="" placeholder="Mật khẩu">
+            </div>
+
+            <div class="form-group">
+              <label for="">Nơi sống</label>
+              <select class="form-control">
+                    <option>Chọn tỉnh thành</option>
+                    <option>Vũng Tàu</option>
+                    <option>Sóc Trăng</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="">Giới tính</label>
+                <br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">Nam</label>
+                </div>  
+                
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">Nữ</label>
+                </div>
+            </div>  
+            </div>
+            
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Tạo tài khoản</button>
+          </form>    
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Điều khoản sử dụng</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    Điều 1:.................
+                    Điều 2:.................
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-danger">NO</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="jquery-3.5.0.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+</body>
+
+</html>

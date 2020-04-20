@@ -1,0 +1,64 @@
+<!-- 
+    Để có thể sử dụng margin và padding không bị lỗi
+    - <a>: (display: block)
+    - <article>: khi các div bên trong dùng float, thì article bao bên ngoài cần có overflow: hidden.
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yan</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="main-contain">
+    <article class="main-news">
+        <a class="link-img" href="https://www.w3schools.com/html/html_colors.asp"> <img class="img" src="img/hinh-chinh.jpg"> </a>
+        <br>
+        <h2>TRẺ</h2>
+        <a class ="link-new" href="https://www.w3schools.com/html/html_colors.asp">Hồng Duy Pinky quá “lầy” khi gạ bán son cho Công Phượng ngay trên sân khấu
+        </a>
+        <p>Ngay tại sân khấu giao lưu ở SVĐ Thống Nhất vào chiều tối nay, Hồng Duy đã có màn gạ bán son cho Công Phượng hết sức vui nhộn
+        </p>
+
+    </article>
+
+    <article class="small-news">
+
+        <div class='small-block-news'>
+            <a href="https://www.w3schools.com/css/css_link.asp"><img  src="img/hinh-phu.jpg"> </a>
+            <a href="https://www.w3schools.com/css/css_link.asp" class="link-new" style="font-size: 15px"> Sơn Tùng M-TP cười tít mắt vì những lời phát biểu hài hước của Đức Phúc</a>
+            <p>1 giờ trước </p> 
+        </div>
+
+        <div class='small-block-news'>
+                <a href="https://www.w3schools.com/css/css_link.asp"><img  src="img/hinh-phu.jpg"> </a>
+                <a href="https://www.w3schools.com/css/css_link.asp" class="link-new" style="font-size: 15px"> Sơn Tùng M-TP cười tít mắt vì những lời phát biểu hài hước của Đức Phúc</a>
+                <p>1 giờ trước </p> 
+        </div>
+
+        <div class='small-block-news'>
+                <a href="https://www.w3schools.com/css/css_link.asp"><img  src="img/hinh-phu.jpg"> </a>
+                <a href="https://www.w3schools.com/css/css_link.asp" class="link-new" style="font-size: 15px"> Sơn Tùng M-TP cười tít mắt vì những lời phát biểu hài hước của Đức Phúc</a>
+                <p>1 giờ trước </p> 
+        </div>
+
+    </article>
+
+    <article>
+        <div class="title">
+            VIDEO NỔI BẬT
+        </div>
+
+        <div class="video-content"> 
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/z1Lr2GwVQJI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </article>
+
+</div>
+
+</body>
+
+</html>

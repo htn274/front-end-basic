@@ -1,0 +1,56 @@
+*{
+	margin: 0;
+	padding: 0;
+	border: none;
+	
+}
+body{
+	background-color: #f5f5f5
+}
+.main-container{
+	width: 930px;
+	height: 720px;
+	background-color: #ffffff;
+	margin: auto;
+	margin-top: 50px;
+}
+.main-news{
+	height: 340px;
+	
+	background-color: #ffffff;
+	overflow: hidden;
+}
+.main-news h2{
+	text-transform: uppercase;
+	font-family: 'Open Sans', sans-serif;
+	margin-bottom: 20px;
+}
+.noi-dung img{
+	width: 460px;
+	height: 286px;
+	float: right;
+}
+.noi-dung {
+	background-color: #ECF8FF;
+	height: 100%;
+	padding-left: 10px;
+}
+.noi-dung p{
+	font-family: 'Open Sans', sans-serif;
+	color: #574949;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-size: 15px;
+	border-bottom: 1px black dotted;
+}
+.lien-quan a{
+	text-decoration: none;		
+	font-family: 'Open Sans', sans-serif;
+	color: black;
+	font-size: 13px;
+}
+.lien-quan i{
+	font-size: 8px;
+	color: grey;
+}
+
