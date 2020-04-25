@@ -134,6 +134,16 @@ for (const cur of ArrObj){
 - Kí hiệu: Dấu ba chấm "..." + array
 - Ý nghĩa: sử dụng để nối các mảng vào 1 mảng lớn hơn. Cụ thể, chia mảng đi sau thành những phần tử riêng biệt rồi đưa nó vào 1 hàm.
 
+Ví dụ:
+
+```js
+let a1 = [1, 2];
+let a2 = [3, 4];
+let a3 = [...a1, ...a2]
+console.log(a3)
+// 1, 2, 3, 4]
+```
+
 ## Rest parameter
 
 - Ý nghĩa: ngược lại với spread operator; nó sẽ nhận vào các giá trị và trả về mảng chứa các giá trị đó khi ta gọi 1 function với nhiều parameter.
@@ -200,7 +210,7 @@ for (let [key, value] of map.entries())
 
 **Một số ưu điểm của Maps so với Object**
 
-- Kiểu dữ liệu của keys đã dạng.
+- Kiểu dữ liệu của keys đa dạng.
 - Có thể biết được kích thước của maps thông qua map.size().
 - Có thể loop qua map.
 
@@ -227,7 +237,7 @@ class Person(name, age, address)
 
 ### Static method
 
-Khi thêm từ khóa **static** và trước các method, khi đó method đó không được kế thừa ở các class con.
+Khi thêm từ khóa **static** và trước các method, khi đó method đó không được kế thừa ở các class con. (protected)
 
 ### Inheritance
 
