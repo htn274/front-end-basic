@@ -44,3 +44,57 @@ Tạo file "webpack.config.js": 4 thành phần chính của webpack bao gồm e
   - webpack-dev-server: tự động cập nhật các thay đổi từ index.js ở src đến dist mà không cần phải lưu bundle.js xuống đĩa.
 - Plugins:
   - HtmlWebpackPlugin: Tự động load các file html từ src lên dist và include bundle.js vào file html.
+
+4. Thiết lập babel
+
+1. Tải babel
+
+```
+npm install --save-dev @babel/core @babel/preset-env babel-loader 
+
+npm install --save core-js@3 regenerator-runtime
+```
+
+2. Thiết lập cấu hình Babel
+
+webpack.config.js
+
+```
+module:
+    {
+        rules: {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: {
+                loader: "babel-loader"
+            }
+        }
+    }
+```
+
+.babelrc
+
+```
+{
+    "presets": [
+        ["@babel/env", {
+            "useBuiltIns": "usage",
+            "corejs": "3",
+            "targets": {
+                "browsers": [
+                    "last 5 versions",
+                    "ie >= 8"
+                ]
+            }
+        }]
+    ]
+}
+```
+
+3. Thiết lập Babel Polyfil
+
+- Cài đặt babel polyfill:
+
+    ```
+    npm install babel-polyfill --save
+    ```
