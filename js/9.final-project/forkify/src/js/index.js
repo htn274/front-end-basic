@@ -23,7 +23,7 @@ const searchCotroller = async () =>{
 
     // 5. Display to the UI
     clearLoader();
-    searchView.rederResults(state.search.results); // TODO
+    searchView.renderResults(state.search.results); 
 }
 }
 
@@ -33,3 +33,13 @@ elements.searchForm.addEventListener('submit', (e)=>
     searchCotroller();
 }
 );
+
+elements.searchResPages.addEventListener('click', e => {
+    const button = e.target.closest('.btn-inline');
+    if (button)
+    {
+        const gotoPage = parseInt(button.dataset.goto, 10);
+        searchView.clearSearchRes();
+        searchView.renderResults(state.search.results, gotoPage);
+    }
+})

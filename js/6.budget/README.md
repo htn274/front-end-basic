@@ -2,18 +2,18 @@
 
 CONTROLLER MODULE
 
-- [] Add event handler
+- [x] Add event handler
 
 UI MODULE
 
-- [] Get input values
-- [] Add the new item to the UI
-- [] Update the UI
+- [x] Get input values
+- [x] Add the new item to the UI
+- [x] Update the UI
 
 DATA MODULE
 
-- [] Calculate the budget
-- [] Add the new items to our data structure
+- [x] Calculate the budget
+- [x] Add the new items to our data structure
 
 #MODULE PATERN
 
