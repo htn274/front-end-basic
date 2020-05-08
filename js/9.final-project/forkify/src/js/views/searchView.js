@@ -3,6 +3,23 @@ import {elements} from './base';
 
 export const getInput = () => elements.searchInput.value;
 
+const litmitRecipeTitle = (title, limitLength = 17) => {
+    const newTitle = [];
+    if (title.length > limitLength)
+    {   
+        title.split(' ').reduce((acc, cur) => {
+            if (acc + cur.length <= limitLength)
+            {
+                newTitle.push(cur);
+            }
+            return acc += cur.length;
+        }, 0);
+        // console.log(newTitle)
+        return `${newTitle.join(' ')}...`;
+    }
+    return title;
+}
+
 const renderSingleRecipe = (recipe) => {
     /* Recipe structure
         image_url: "http://forkify-api.herokuapp.com/images/best_pizza_dough_recipe1b20.jpg"
@@ -20,7 +37,7 @@ const renderSingleRecipe = (recipe) => {
                     <img src="${recipe.image_url}" alt="${recipe.title}">
                 </figure>
                 <div class="results__data">
-                    <h4 class="results__name">${recipe.title}</h4>
+                    <h4 class="results__name">${litmitRecipeTitle(recipe.title)}</h4>
                     <p class="results__author">${recipe.publisher}</p>
                 </div>
             </a>
@@ -37,3 +54,4 @@ export const rederResults = (recipes) => {
 export const clearInput = () => elements.searchInput.value = '';
 
 export const clearSearchRes = () => elements.searchResList.innerHTML = '';
+
