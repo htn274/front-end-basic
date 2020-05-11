@@ -6,7 +6,7 @@ Technologies: \#ES6 \#Ajax \#MVC
 
 ## Features
 
-- [] Search
+- [x] Search
   - [x] Search Model: axois, async/await, module in js.
   - [x] Search View: insertAdjencyHtml.
   - [x] Pagination: data-*, deligation with closest. 
