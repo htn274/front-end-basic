@@ -3,6 +3,7 @@ import Search from './models/Search'
 import Recipe from './models/Recipe'
 import {elements, renderLoader, clearLoader} from './views/base'
 import * as searchView from './views/searchView'
+import * as recipeView from './views/recipeView'
 
 const state = {}
 
@@ -52,22 +53,36 @@ elements.searchResPages.addEventListener('click', e => {
 
 const recipeController = async () => {
     let rId = window.location.hash.replace('#', '');
+    // Prepare for UI
+    recipeView.clearView();
+    renderLoader(elements.recipeRes);
     if (rId)
     {
+        if (state.search)
+        {
+            searchView.hightlightSelected(rId);
+        }
+
         // Create recipe
         state.recipe = new Recipe(rId);
-        // Get recipe
-        await state.recipe.getRecipe();
+        try {
+            // Get recipe
+            await state.recipe.getRecipe();
+            state.recipe.parseIngredients();
 
-        // Prepare for the UI
+            // Calculate time cooking and serving people
+            state.recipe.calTime();
+            state.recipe.calServings();
 
-        // Calculate time cooking and serving people
-        state.recipe.calTime();
-        state.recipe.calServings();
-
-        // Display to UI
-        window.r = state.recipe;
-        // console.log(state.recipe);
+            // Render recipe
+            clearLoader();
+            recipeView.renderRecipe(state.recipe)
+        } 
+        catch (err)
+        {
+            console.log(err);
+        }
+        
     }
     
 }
