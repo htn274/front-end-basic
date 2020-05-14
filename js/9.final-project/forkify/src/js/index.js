@@ -87,6 +87,22 @@ const recipeController = async () => {
     
 }
 
+elements.recipeRes.addEventListener('click', e => {
+    if (e.target.matches('.btn-decrease, .btn-decrease *'))
+    {
+        if (state.recipe.servings > 1)
+        {
+            state.recipe.updateServings('dec');
+        }
+    }
+    else if (e.target.matches('.btn-increase, .btn-increase *'))
+    {
+        state.recipe.updateServings('inc');
+    }
+    recipeView.updateServings(state.recipe);
+    // console.log(state.recipe);
+})
+
 window.addEventListener('hashchange', recipeController);
 window.addEventListener('load', recipeController);  
 window.addEventListener('load', searchCotroller);
