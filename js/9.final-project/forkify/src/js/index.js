@@ -1,11 +1,14 @@
 // Global app controller
 import Search from './models/Search'
 import Recipe from './models/Recipe'
+import List from './models/List'
 import {elements, renderLoader, clearLoader} from './views/base'
 import * as searchView from './views/searchView'
 import * as recipeView from './views/recipeView'
+import * as listView from './views/listView'
 
-const state = {}
+const state = {};
+window.state = state;
 
 const searchCotroller = async () =>{
     // 1. Get the query from UI
@@ -51,6 +54,32 @@ elements.searchResPages.addEventListener('click', e => {
     }
 })
 
+const listController = () => {
+    if (!state.list) state.list = new List();
+
+    // Render item
+    state.recipe.ingredients.forEach(el => {
+        const item = state.list.addItem(el.count, el.unit, el.ingredient);
+        listView.renderItem(item);
+    })
+}
+
+elements.shoppingList.addEventListener('click', e=> {
+    const id = e.target.closest('.shopping__item').dataset.itemid;
+
+    if (e.target.matches('.shopping__delete, .shopping__delete *'))
+    {
+        listView.deleteItem(id);
+        state.list.delete(id);
+    }
+    if (e.target.matches('.shopping__count-value'))
+    {
+        const value = e.target.value;
+        state.list.updateCount(id, value);
+        console.log(value);
+    }
+})
+
 const recipeController = async () => {
     let rId = window.location.hash.replace('#', '');
     // Prepare for UI
@@ -69,7 +98,6 @@ const recipeController = async () => {
             // Get recipe
             await state.recipe.getRecipe();
             state.recipe.parseIngredients();
-
             // Calculate time cooking and serving people
             state.recipe.calTime();
             state.recipe.calServings();
@@ -87,20 +115,25 @@ const recipeController = async () => {
     
 }
 
+// Update ingredients when increase or decrease number of servings
 elements.recipeRes.addEventListener('click', e => {
     if (e.target.matches('.btn-decrease, .btn-decrease *'))
     {
         if (state.recipe.servings > 1)
         {
             state.recipe.updateServings('dec');
+            recipeView.updateServings(state.recipe);
         }
     }
     else if (e.target.matches('.btn-increase, .btn-increase *'))
     {
         state.recipe.updateServings('inc');
+        recipeView.updateServings(state.recipe);
     }
-    recipeView.updateServings(state.recipe);
-    // console.log(state.recipe);
+    else if (e.target.matches('.recipe__btn--add, .recipe__btn--add *'))
+    {
+        listController();
+    }
 })
 
 window.addEventListener('hashchange', recipeController);

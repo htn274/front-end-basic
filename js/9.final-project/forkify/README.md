@@ -10,6 +10,8 @@ Technologies: \#ES6 \#Ajax \#MVC
   - [x] Search Model: axois, async/await, module in js.
   - [x] Search View: insertAdjencyHtml.
   - [x] Pagination: data-*, deligation with closest. 
-- [] Recipe
+- [x] Recipe
+  - [x] Recipe Model:
+  - [x] Recipe View: deligation with matches.
 - [] List
 - [] Likes
