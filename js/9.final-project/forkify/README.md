@@ -13,5 +13,5 @@ Technologies: \#ES6 \#Ajax \#MVC
 - [x] Recipe
   - [x] Recipe Model:
   - [x] Recipe View: deligation with matches.
-- [] List
-- [] Likes
+- [x] List
+- [x] Likes

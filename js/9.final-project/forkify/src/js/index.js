@@ -2,14 +2,21 @@
 import Search from './models/Search'
 import Recipe from './models/Recipe'
 import List from './models/List'
+import Likes from './models/Likes'
 import {elements, renderLoader, clearLoader} from './views/base'
 import * as searchView from './views/searchView'
 import * as recipeView from './views/recipeView'
 import * as listView from './views/listView'
+import * as likesView from './views/likesView'
 
 const state = {};
 window.state = state;
 
+/*
+**
+SEARCH CONTROLLER
+**
+*/
 const searchCotroller = async () =>{
     // 1. Get the query from UI
     // const query = searchView.getInput(); 
@@ -54,6 +61,12 @@ elements.searchResPages.addEventListener('click', e => {
     }
 })
 
+/*
+**
+LIST CONTROLLER
+**
+*/
+
 const listController = () => {
     if (!state.list) state.list = new List();
 
@@ -72,13 +85,58 @@ elements.shoppingList.addEventListener('click', e=> {
         listView.deleteItem(id);
         state.list.delete(id);
     }
-    if (e.target.matches('.shopping__count-value'))
+    else if (e.target.matches('.shopping__count-value'))
     {
-        const value = e.target.value;
+        const value = parseFloat(e.target.value, 10);
         state.list.updateCount(id, value);
-        console.log(value);
     }
 })
+
+/*
+**
+LIKES CONTROLLER
+**
+*/
+// TESTING
+state.likes = new Likes();
+likesView.toogleLikeMenu(state.likes.numLikes());
+const likeController = () => {
+    if (!state.likes) state.likes = new Likes();
+    const currentID = state.recipe.id;
+    if (!state.likes.isLike(currentID))
+    {
+        // Toogle like button
+        likesView.toogleLikeButton(true);
+        // Add to state likes
+        const newLike = state.likes.addLike(currentID, 
+            state.recipe.title, 
+            state.recipe.publisher, 
+            state.recipe.img_url);
+
+        // Add to UI
+        likesView.addLike(newLike);
+        console.log(state.likes);
+    }
+    else
+    {
+        // Toogle like button
+        likesView.toogleLikeButton(false);
+        // Remove from state likes
+        state.likes.deleteLike(currentID);
+
+        // Remove from UI
+        likesView.deleteLike(currentID);
+        console.log(state.likes);
+    }
+    likesView.toogleLikeMenu(state.likes.numLikes());
+}
+
+
+/*
+**
+RECIPE CONTROLLER
+**
+*/
 
 const recipeController = async () => {
     let rId = window.location.hash.replace('#', '');
@@ -104,7 +162,7 @@ const recipeController = async () => {
 
             // Render recipe
             clearLoader();
-            recipeView.renderRecipe(state.recipe)
+            recipeView.renderRecipe(state.recipe, state.likes.isLike(rId));
         } 
         catch (err)
         {
@@ -115,7 +173,7 @@ const recipeController = async () => {
     
 }
 
-// Update ingredients when increase or decrease number of servings
+// Handling recipe button clicks
 elements.recipeRes.addEventListener('click', e => {
     if (e.target.matches('.btn-decrease, .btn-decrease *'))
     {
@@ -133,6 +191,10 @@ elements.recipeRes.addEventListener('click', e => {
     else if (e.target.matches('.recipe__btn--add, .recipe__btn--add *'))
     {
         listController();
+    }
+    else if (e.target.matches('.recipe__love, .recipe__love *'))
+    {
+        likeController();
     }
 })
 

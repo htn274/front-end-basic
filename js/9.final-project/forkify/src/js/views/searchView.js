@@ -3,7 +3,7 @@ import {elements} from './base';
 
 export const getInput = () => elements.searchInput.value;
 
-const litmitRecipeTitle = (title, limitLength = 17) => {
+export const litmitRecipeTitle = (title, limitLength = 17) => {
     const newTitle = [];
     if (title.length > limitLength)
     {   
