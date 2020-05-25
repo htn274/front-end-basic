@@ -97,9 +97,7 @@ elements.shoppingList.addEventListener('click', e=> {
 LIKES CONTROLLER
 **
 */
-// TESTING
-state.likes = new Likes();
-likesView.toogleLikeMenu(state.likes.numLikes());
+
 const likeController = () => {
     if (!state.likes) state.likes = new Likes();
     const currentID = state.recipe.id;
@@ -131,6 +129,17 @@ const likeController = () => {
     likesView.toogleLikeMenu(state.likes.numLikes());
 }
 
+window.addEventListener('load', () => {
+    state.likes = new Likes();
+    // Read likes from Storage
+    state.likes.readStorage();
+    // Toogle like menu
+    likesView.toogleLikeMenu(state.likes.numLikes());
+    // 
+    state.likes.likes.forEach((like) => {
+        likesView.addLike(like);
+    })
+})
 
 /*
 **

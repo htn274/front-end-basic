@@ -6,13 +6,15 @@ export default class Likes{
     addLike(id, title, author, img){
         const newLike = {id, title, author, img};
         this.likes.push(newLike);
+        this.addStorage();
         return newLike;
     }
 
     deleteLike(id)
     {
         const index = this.likes.findIndex(el=> el.id == id);
-        return this.likes.splice(index, 1);
+        this.likes.splice(index, 1);
+        this.addStorage();
     }   
     
     isLike(id)
@@ -23,5 +25,15 @@ export default class Likes{
     numLikes()
     {
         return this.likes.length;
+    }
+
+    addStorage()
+    {
+        localStorage.setItem('likes', JSON.stringify(this.likes));
+    }
+
+    readStorage()
+    {
+        this.likes = JSON.parse(localStorage.getItem('likes'));
     }
 }
